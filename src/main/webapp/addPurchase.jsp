@@ -8,16 +8,17 @@
 <body>
 
 <br>
-<h1 >PAHANA EDU BOOKSHOP</h1>
-<div class ="nav"><ul>
-    <li><a href="addCustomer.jsp" >Add New Customer</a></li>
-    <li><a href="viewCustomers.jsp" >View Customers</a></li>
-    <li><a href="manageItems.jsp" >Manage Items</a></li>
-    <li><a href="addPurchase.jsp" >Add Purchase</a></li>
-    <li><a href="generateBill.jsp" >Generate Bill</a></li>
-    <li><a href="help.jsp" >Help</a></li>
-    <li><a href="login.jsp" >Exit</a></li>
-</ul>
+<h1>PAHANA EDU BOOKSHOP</h1>
+<div class="nav">
+    <ul>
+        <li><a href="addCustomer.jsp">Add New Customer</a></li>
+        <li><a href="viewCustomers.jsp">View Customers</a></li>
+        <li><a href="manageItems.jsp">Manage Items</a></li>
+        <li><a href="addPurchase.jsp">Add Purchase</a></li>
+        <li><a href="generateBill.jsp">Generate Bill</a></li>
+        <li><a href="help.jsp">Help</a></li>
+        <li><a href="login.jsp">Exit</a></li>
+    </ul>
 </div>
 <br></br>
 
@@ -26,16 +27,29 @@
     <% if (request.getAttribute("error") != null) { %>
     <div class="alert alert-danger"><%= request.getAttribute("error") %></div>
     <% } %>
-    <form action="<%= request.getContextPath() %>/purchase" method="post" >
-        <div >
+
+    <%
+        // Get the account number if passed from "Bill" button
+        String selectedAccount = request.getParameter("accountNumber");
+    %>
+
+    <form action="<%= request.getContextPath() %>/purchase" method="post">
+        <div>
             <label for="accountNumber" class="form-label">Customer</label>
             <select class="form-control" id="accountNumber" name="accountNumber" required>
-                <% for (Customer customer : CustomerServlet.getAllCustomers()) { %>
-                <option value="<%= customer.getAccountNumber() %>"><%= customer.getName() %> (<%= customer.getAccountNumber() %>)</option>
+                <option value="">-- Select Customer --</option>
+                <% for (Customer customer : CustomerServlet.getAllCustomers()) {
+                    String acc = customer.getAccountNumber();
+                    String selected = (selectedAccount != null && selectedAccount.equals(acc)) ? "selected" : "";
+                %>
+                <option value="<%= acc %>" <%= selected %>>
+                    <%= customer.getName() %> (<%= acc %>)
+                </option>
                 <% } %>
             </select>
         </div>
-        <div >
+
+        <div>
             <label for="itemId" class="form-label">Item</label>
             <select class="form-control" id="itemId" name="itemId" required>
                 <% for (Item item : ItemServlet.getAllItems()) { %>
@@ -43,10 +57,12 @@
                 <% } %>
             </select>
         </div>
-        <div >
+
+        <div>
             <label for="quantity" class="form-label">Quantity Purchased</label>
             <input type="number" class="form-control" id="quantity" name="quantity" required min="1">
         </div>
+
         <button type="submit" class="btn btn-primary">Add Purchase</button>
         <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
     </form>

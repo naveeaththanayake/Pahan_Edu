@@ -8,16 +8,17 @@
 <body>
 
 <br>
-<h1 >PAHANA EDU BOOKSHOP</h1>
-<div class ="nav"><ul>
-    <li><a href="addCustomer.jsp" >Add New Customer</a></li>
-    <li><a href="viewCustomers.jsp" >View Customers</a></li>
-    <li><a href="manageItems.jsp" >Manage Items</a></li>
-    <li><a href="addPurchase.jsp" >Add Purchase</a></li>
-    <li><a href="generateBill.jsp" >Generate Bill</a></li>
-    <li><a href="help.jsp" >Help</a></li>
-    <li><a href="login.jsp" >Exit</a></li>
-</ul>
+<h1>PAHANA EDU BOOKSHOP</h1>
+<div class="nav">
+    <ul>
+        <li><a href="addCustomer.jsp">Add New Customer</a></li>
+        <li><a href="viewCustomers.jsp">View Customers</a></li>
+        <li><a href="manageItems.jsp">Manage Items</a></li>
+        <li><a href="addPurchase.jsp">Add Purchase</a></li>
+        <li><a href="generateBill.jsp">Generate Bill</a></li>
+        <li><a href="help.jsp">Help</a></li>
+        <li><a href="login.jsp">Exit</a></li>
+    </ul>
 </div>
 <br></br>
 
@@ -51,6 +52,10 @@
                 <form action="${pageContext.request.contextPath}/customer" method="post" class="inline-form">
                     <input type="hidden" name="action" value="delete">
                     <input type="hidden" name="accountNumber" value="<%= customer.getAccountNumber() %>">
+
+                    <!-- FIXED: use scriptlet instead of EL -->
+                    <a href="addPurchase.jsp?accountNumber=<%= customer.getAccountNumber() %>" class="btn btn-primary">Bill</a>
+
                     <button type="submit" class="btn btn-sm btn-danger">Delete</button>
                 </form>
             </td>
