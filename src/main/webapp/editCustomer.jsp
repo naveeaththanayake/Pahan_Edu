@@ -6,6 +6,21 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=<%= System.currentTimeMillis() %>">
 </head>
 <body>
+
+<br>
+<h1 >PAHANA EDU BOOKSHOP</h1>
+<div class ="nav"><ul>
+    <li><a href="addCustomer.jsp" >Add New Customer</a></li>
+    <li><a href="viewCustomers.jsp" >View Customers</a></li>
+    <li><a href="manageItems.jsp" >Manage Items</a></li>
+    <li><a href="addPurchase.jsp" >Add Purchase</a></li>
+    <li><a href="generateBill.jsp" >Generate Bill</a></li>
+    <li><a href="help.jsp" >Help</a></li>
+    <li><a href="login.jsp" >Exit</a></li>
+</ul>
+</div>
+<br></br>
+
 <div class="container">
     <h2 class="mt-5">Edit Customer</h2>
     <%
