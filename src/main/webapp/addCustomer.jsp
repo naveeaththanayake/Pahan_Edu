@@ -1,27 +1,33 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="model.Customer, servlet.CustomerServlet, java.util.List" %>
+
+
 <html>
 <head>
     <title>Add Customer - Pahana Edu Bookshop</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=<%= System.currentTimeMillis() %>">
 </head>
 <body>
-
-<div class="mt-4">
-    <a href="addCustomer.jsp" class="btn btn-primary m-2">Add New Customer</a>
-    <a href="viewCustomers.jsp" class="btn btn-primary m-2">View Customers</a>
-    <a href="manageItems.jsp" class="btn btn-primary m-2">Manage Items</a>
-    <a href="addPurchase.jsp" class="btn btn-primary m-2">Add Purchase</a>
-    <a href="generateBill.jsp" class="btn btn-primary m-2">Generate Bill</a>
-    <a href="help.jsp" class="btn btn-primary m-2">Help</a>
-    <a href="login.jsp" class="btn btn-danger m-2">Exit</a>
+<br>
+<h1 >PAHANA EDU BOOKSHOP</h1>
+<div class ="nav"><ul>
+    <li><a href="addCustomer.jsp" >Add New Customer</a></li>
+    <li><a href="viewCustomers.jsp" >View Customers</a></li>
+    <li><a href="manageItems.jsp" >Manage Items</a></li>
+    <li><a href="addPurchase.jsp" >Add Purchase</a></li>
+    <li><a href="generateBill.jsp" >Generate Bill</a></li>
+    <li><a href="help.jsp" >Help</a></li>
+    <li><a href="login.jsp" >Exit</a></li>
+</ul>
 </div>
+<br></br>
 
 <div class="container">
-    <h2 class="mt-5">Add New Customer</h2>
+    <h2 >Add New Customer</h2>
     <% if (request.getAttribute("error") != null) { %>
     <div class="alert alert-danger"><%= request.getAttribute("error") %></div>
     <% } %>
-    <form action="<%= request.getContextPath() %>/customer" method="post" class="mt-3">
+    <form action="<%= request.getContextPath() %>/customer" method="post" class="f">
         <input type="hidden" name="action" value="add">
         <div class="mb-3">
             <label for="accountNumber" class="form-label">Account Number</label>
@@ -40,8 +46,41 @@
             <input type="text" class="form-control" id="phone" name="phone" required pattern="[0-9]{10}">
         </div>
         <button type="submit" class="btn btn-primary">Add Customer</button>
-        <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
+
     </form>
+
+    <div class="main-container">
+        <h2>Customer List</h2>
+        <% if (request.getAttribute("error") != null) { %>
+        <div class="alert"><%= request.getAttribute("error") %></div>
+        <% } %>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Account Number</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            List<Customer> customers = CustomerServlet.getAllCustomers();
+            for (Customer customer : customers) {
+        %>
+        <tr>
+            <td><%= customer.getAccountNumber() %></td>
+            <td><%= customer.getName() %></td>
+            <td><%= customer.getAddress() %></td>
+            <td><%= customer.getPhone() %></td>
+
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+
 </div>
+    <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
 </body>
 </html>
