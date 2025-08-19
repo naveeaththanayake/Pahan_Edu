@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Item, servlet.ItemServlet, java.util.List" %>
 <html>
@@ -19,9 +24,17 @@
 
 <div class="main-container">
     <h2>Manage Items</h2>
+<<<<<<< Updated upstream
     <% if (request.getAttribute("error") != null) { %>
     <div class="alert"><%= request.getAttribute("error") %></div>
     <% } %>
+=======
+
+    <% if (request.getAttribute("error") != null) { %>
+    <div class="alert"><%= request.getAttribute("error") %></div>
+    <% } %>
+
+>>>>>>> Stashed changes
     <h4>Add New Item</h4>
     <form action="${pageContext.request.contextPath}/item" method="post">
         <input type="hidden" name="action" value="add">
@@ -37,6 +50,13 @@
             <label for="price" class="form-label">Price (LKR)</label>
             <input type="number" class="form-input" id="price" name="price" required min="0" step="0.01">
         </div>
+<<<<<<< Updated upstream
+=======
+        <div class="form-group">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-input" id="stock" name="stock" required min="0" step="0">
+        </div>
+>>>>>>> Stashed changes
         <button type="submit" class="btn btn-primary">Add Item</button>
     </form>
 
@@ -47,24 +67,41 @@
             <th>Item ID</th>
             <th>Name</th>
             <th>Price (LKR)</th>
+<<<<<<< Updated upstream
+=======
+            <th>Stock</th>
+>>>>>>> Stashed changes
             <th>Actions</th>
         </tr>
         </thead>
         <tbody>
         <%
             List<Item> items = ItemServlet.getAllItems();
+<<<<<<< Updated upstream
             for (Item item : items) {
+=======
+            if (items != null) {
+                for (Item item : items) {
+>>>>>>> Stashed changes
         %>
         <tr>
             <td><%= item.getItemId() %></td>
             <td><%= item.getName() %></td>
             <td><%= item.getPrice() %></td>
+<<<<<<< Updated upstream
+=======
+            <td><%= item.getStock() %></td>
+>>>>>>> Stashed changes
             <td>
                 <form action="${pageContext.request.contextPath}/item" method="post" class="inline-form">
                     <input type="hidden" name="action" value="update">
                     <input type="hidden" name="itemId" value="<%= item.getItemId() %>">
                     <input type="text" class="form-input" name="name" value="<%= item.getName() %>" required>
                     <input type="number" class="form-input" name="price" value="<%= item.getPrice() %>" required min="0" step="0.01">
+<<<<<<< Updated upstream
+=======
+                    <input type="number" class="form-input" name="stock" value="<%= item.getStock() %>" required min="0" step="0">
+>>>>>>> Stashed changes
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
                 </form>
                 <form action="${pageContext.request.contextPath}/item" method="post" class="inline-form">
@@ -74,10 +111,23 @@
                 </form>
             </td>
         </tr>
+<<<<<<< Updated upstream
         <% } %>
+=======
+        <%      }
+        }
+        %>
+>>>>>>> Stashed changes
         </tbody>
     </table>
     <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
 </div>
+<<<<<<< Updated upstream
 </body>
 </html>
+=======
+
+</body>
+</html>
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
