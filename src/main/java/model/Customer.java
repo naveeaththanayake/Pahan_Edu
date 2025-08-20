@@ -6,6 +6,10 @@ public class Customer {
     private String address;
     private String phone;
 
+
+    public Customer() {
+    }
+
     public Customer(String accountNumber, String name, String address, String phone) {
         this.accountNumber = accountNumber;
         this.name = name;
@@ -13,11 +17,35 @@ public class Customer {
         this.phone = phone;
     }
 
-    public String getAccountNumber() { return accountNumber; }
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
-    public String getAddress() { return address; }
-    public void setAddress(String address) { this.address = address; }
-    public String getPhone() { return phone; }
-    public void setPhone(String phone) { this.phone = phone; }
+    public String getAccountNumber() {
+        return accountNumber;
+    }
+
+    public void setAccountNumber(String accountNumber) {
+        this.accountNumber = accountNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 }
