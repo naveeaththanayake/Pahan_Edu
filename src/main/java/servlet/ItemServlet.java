@@ -27,7 +27,7 @@ public class ItemServlet extends HttpServlet {
             String itemId = request.getParameter("itemId");
             String name = request.getParameter("name");
             double price = Double.parseDouble(request.getParameter("price"));
-            int stock = Integer.parseInt(request.getParameter("stock")); // Parse stock
+            int stock = Integer.parseInt(request.getParameter("stock"));
 
             try (Connection conn = DBConnection.getConnection()) {
                 String sql = "INSERT INTO items (itemId, name, price, stock) VALUES (?, ?, ?, ?)";
@@ -47,14 +47,14 @@ public class ItemServlet extends HttpServlet {
             String itemId = request.getParameter("itemId");
             String name = request.getParameter("name");
             double price = Double.parseDouble(request.getParameter("price"));
-            int stock = Integer.parseInt(request.getParameter("stock")); // Parse stock
+            int stock = Integer.parseInt(request.getParameter("stock"));
 
             try (Connection conn = DBConnection.getConnection()) {
                 String sql = "UPDATE items SET name = ?, price = ?, stock = ? WHERE itemId = ?";
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setString(1, name);
                 stmt.setDouble(2, price);
-                stmt.setInt(3, stock); // Set stock
+                stmt.setInt(3, stock);
                 stmt.setString(4, itemId);
                 stmt.executeUpdate();
                 response.sendRedirect("manageItems.jsp");
@@ -97,7 +97,7 @@ public class ItemServlet extends HttpServlet {
                         rs.getString("itemId"),
                         rs.getString("name"),
                         rs.getDouble("price"),
-                        rs.getInt("stock") // Include stock
+                        rs.getInt("stock")
                 ));
             }
         } catch (SQLException e) {
