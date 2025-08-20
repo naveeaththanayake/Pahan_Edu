@@ -1,3 +1,8 @@
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Customer, servlet.CustomerServlet, java.util.List" %>
 
@@ -15,7 +20,11 @@
     <li><a href="viewCustomers.jsp" >View Customers</a></li>
     <li><a href="manageItems.jsp" >Manage Items</a></li>
     <li><a href="addPurchase.jsp" >Add Purchase</a></li>
+<<<<<<< Updated upstream
     <li><a href="generateBill.jsp" >Generate Bill</a></li>
+=======
+    <li><a href="billHistory.jsp" >Bill History</a></li>
+>>>>>>> Stashed changes
     <li><a href="help.jsp" >Help</a></li>
     <li><a href="login.jsp" >Exit</a></li>
 </ul>
@@ -83,4 +92,9 @@
 </div>
     <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
 </body>
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+
+>>>>>>> Stashed changes
