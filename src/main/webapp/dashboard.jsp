@@ -11,13 +11,30 @@
         response.sendRedirect(request.getContextPath() + "/login.jsp");
         return;
     } %>
+<<<<<<< Updated upstream
+=======
+    <div class="mt-4">
+        <a href="addCustomer.jsp" class="btn btn-primary m-2">Add New Customer</a>
+        <a href="viewCustomers.jsp" class="btn btn-primary m-2">View Customers</a>
+        <a href="manageItems.jsp" class="btn btn-primary m-2">Manage Items</a>
+        <a href="addPurchase.jsp" class="btn btn-primary m-2">Add Purchase</a>
+        <a href="generateBill.jsp" class="btn btn-primary m-2">Generate Bill</a>
+        <a href="help.jsp" class="btn btn-primary m-2">Help</a>
+        <a href="login.jsp" class="btn btn-danger m-2">Exit</a>
+
+>>>>>>> Stashed changes
 
     <div class ="nav"><ul>
         <li><a href="addCustomer.jsp" >Add New Customer</a></li>
         <li><a href="viewCustomers.jsp" >View Customers</a></li>
         <li><a href="manageItems.jsp" >Manage Items</a></li>
         <li><a href="addPurchase.jsp" >Add Purchase</a></li>
+<<<<<<< Updated upstream
         <li><a href="generateBill.jsp" >Generate Bill</a></li>
+=======
+        <li><a href="billHistory.jsp" >Bill History</a></li>
+        <li><a href="saleReport.jsp" >Sale Report</a></li>
+>>>>>>> Stashed changes
         <li><a href="help.jsp" >Help</a></li>
         <li><a href="login.jsp" >Exit</a></li>
     </ul>

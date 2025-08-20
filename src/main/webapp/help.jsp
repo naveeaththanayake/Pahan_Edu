@@ -1,3 +1,7 @@
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -7,6 +11,7 @@
 <body>
 
 <br>
+<<<<<<< Updated upstream
 <h1 >PAHANA EDU BOOKSHOP</h1>
 <div class ="nav"><ul>
     <li><a href="addCustomer.jsp" >Add New Customer</a></li>
@@ -19,6 +24,23 @@
 </ul>
 </div>
 <br></br>
+=======
+<h1>PAHANA EDU BOOKSHOP</h1>
+<div class="nav">
+    <ul>
+        <li><a href="addCustomer.jsp">Add New Customer</a></li>
+        <li><a href="viewCustomers.jsp">View Customers</a></li>
+        <li><a href="manageItems.jsp">Manage Items</a></li>
+        <li><a href="addPurchase.jsp">Add Purchase</a></li>
+        <li><a href="generateBill.jsp">Generate Bill</a></li>
+        <li><a href="billHistory.jsp">Bill History</a></li>
+        <li><a href="saleReport.jsp" >Sale Report</a></li>
+        <li><a href="help.jsp">Help</a></li>
+        <li><a href="login.jsp">Exit</a></li>
+    </ul>
+</div>
+<br>
+>>>>>>> Stashed changes
 
 <div class="container">
     <h2 class="mt-5">Help - System Usage Guidelines</h2>
@@ -41,4 +63,9 @@
     <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
 </div>
 </body>
+<<<<<<< Updated upstream
 </html>
+=======
+</html>
+
+>>>>>>> Stashed changes
