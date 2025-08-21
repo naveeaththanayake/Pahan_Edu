@@ -1,115 +1,140 @@
 package servlet;
 
-import model.Customer;
-import util.DBConnection;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import model.Customer;
+import util.DBConnection;
+
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @WebServlet("/customer")
 public class CustomerServlet extends HttpServlet {
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
 
-        if ("add".equals(action)) {
-            String accountNumber = request.getParameter("accountNumber");
-            String name = request.getParameter("name");
-            String address = request.getParameter("address");
-            String phone = request.getParameter("phone");
+        try {
+            if ("add".equals(action)) {
+                addCustomer(request, response);
+            } else if ("update".equals(action)) {
+                updateCustomer(request, response);
+            } else if ("delete".equals(action)) {
+                deleteCustomer(request, response);
+            } else {
+                response.sendRedirect("viewCustomers.jsp");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Error: " + e.getMessage());
+            request.getRequestDispatcher("error.jsp").forward(request, response);
+        }
+    }
 
-            try (Connection conn = DBConnection.getConnection()) {
-                String sql = "INSERT INTO customers (accountNumber, name, address, phone) VALUES (?, ?, ?, ?)";
-                PreparedStatement stmt = conn.prepareStatement(sql);
+    // ================= CRUD METHODS =================
+
+    private void addCustomer(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String accountNumber = request.getParameter("accountNumber");
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "INSERT INTO customers (accountNumber, name, address, phone) VALUES (?, ?, ?, ?)";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, accountNumber);
                 stmt.setString(2, name);
                 stmt.setString(3, address);
                 stmt.setString(4, phone);
                 stmt.executeUpdate();
-                response.sendRedirect("viewCustomers.jsp");
-            } catch (SQLException e) {
-                request.setAttribute("error", "Error adding customer: " + e.getMessage());
-                request.getRequestDispatcher("addCustomer.jsp").forward(request, response);
             }
-        } else if ("edit".equals(action)) {
-            String accountNumber = request.getParameter("accountNumber");
-            String name = request.getParameter("name");
-            String address = request.getParameter("address");
-            String phone = request.getParameter("phone");
+        }
 
-            try (Connection conn = DBConnection.getConnection()) {
-                String sql = "UPDATE customers SET name = ?, address = ?, phone = ? WHERE accountNumber = ?";
-                PreparedStatement stmt = conn.prepareStatement(sql);
+        response.sendRedirect("viewCustomers.jsp");
+    }
+
+    private void updateCustomer(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String accountNumber = request.getParameter("accountNumber");
+        String name = request.getParameter("name");
+        String address = request.getParameter("address");
+        String phone = request.getParameter("phone");
+
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "UPDATE customers SET name=?, address=?, phone=? WHERE accountNumber=?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
                 stmt.setString(1, name);
                 stmt.setString(2, address);
                 stmt.setString(3, phone);
                 stmt.setString(4, accountNumber);
                 stmt.executeUpdate();
-                response.sendRedirect("viewCustomers.jsp");
-            } catch (SQLException e) {
-                request.setAttribute("error", "Error updating customer: " + e.getMessage());
-                request.getRequestDispatcher("editCustomer.jsp?accountNumber=" + accountNumber).forward(request, response);
-            }
-        } else if ("delete".equals(action)) {
-            String accountNumber = request.getParameter("accountNumber");
-
-            try (Connection conn = DBConnection.getConnection()) {
-                // Delete related purchases first
-                String deletePurchasesSql = "DELETE FROM purchases WHERE accountNumber = ?";
-                PreparedStatement deletePurchasesStmt = conn.prepareStatement(deletePurchasesSql);
-                deletePurchasesStmt.setString(1, accountNumber);
-                deletePurchasesStmt.executeUpdate();
-
-                // Delete customer
-                String deleteCustomerSql = "DELETE FROM customers WHERE accountNumber = ?";
-                PreparedStatement deleteCustomerStmt = conn.prepareStatement(deleteCustomerSql);
-                deleteCustomerStmt.setString(1, accountNumber);
-                deleteCustomerStmt.executeUpdate();
-                response.sendRedirect("viewCustomers.jsp");
-            } catch (SQLException e) {
-                request.setAttribute("error", "Error deleting customer: " + e.getMessage());
-                request.getRequestDispatcher("viewCustomers.jsp").forward(request, response);
             }
         }
+
+        response.sendRedirect("viewCustomers.jsp");
     }
 
-    public static Customer getCustomerById(String accountNumber) {
+    private void deleteCustomer(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        String accountNumber = request.getParameter("accountNumber");
+
         try (Connection conn = DBConnection.getConnection()) {
-            String sql = "SELECT * FROM customers WHERE accountNumber = ?";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            stmt.setString(1, accountNumber);
-            ResultSet rs = stmt.executeQuery(); // Fixed: Changed executeResultSet to executeQuery
-            if (rs.next()) {
-                return new Customer(rs.getString("accountNumber"), rs.getString("name"), rs.getString("address"), rs.getString("phone"));
+            String sql = "DELETE FROM customers WHERE accountNumber=?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, accountNumber);
+                stmt.executeUpdate();
             }
-        } catch (SQLException e) {
-            e.printStackTrace();
         }
-        return null;
+
+        response.sendRedirect("viewCustomers.jsp");
     }
+
+    // ================= HELPER METHODS FOR JSP =================
 
     public static List<Customer> getAllCustomers() {
         List<Customer> customers = new ArrayList<>();
-        try (Connection conn = DBConnection.getConnection()) {
-            String sql = "SELECT * FROM customers";
-            PreparedStatement stmt = conn.prepareStatement(sql);
-            ResultSet rs = stmt.executeQuery(); // Fixed: Changed executeResultSet to executeQuery
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery("SELECT * FROM customers")) {
+
             while (rs.next()) {
-                customers.add(new Customer(rs.getString("accountNumber"), rs.getString("name"), rs.getString("address"), rs.getString("phone")));
+                customers.add(new Customer(
+                        rs.getString("accountNumber"),
+                        rs.getString("name"),
+                        rs.getString("address"),
+                        rs.getString("phone")
+                ));
             }
-        } catch (SQLException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return customers;
+    }
+
+    public static Customer getCustomerById(String accountNumber) {
+        Customer customer = null;
+        try (Connection conn = DBConnection.getConnection()) {
+            String sql = "SELECT * FROM customers WHERE accountNumber=?";
+            try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+                stmt.setString(1, accountNumber);
+                try (ResultSet rs = stmt.executeQuery()) {
+                    if (rs.next()) {
+                        customer = new Customer(
+                                rs.getString("accountNumber"),
+                                rs.getString("name"),
+                                rs.getString("address"),
+                                rs.getString("phone")
+                        );
+                    }
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return customer;
     }
 }
