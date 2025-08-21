@@ -37,7 +37,11 @@ public class CustomerServlet extends HttpServlet {
         }
     }
 
+<<<<<<< HEAD
     // ================= CRUD METHODS =================
+=======
+
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
 
     private void addCustomer(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String accountNumber = request.getParameter("accountNumber");
@@ -93,7 +97,10 @@ public class CustomerServlet extends HttpServlet {
         response.sendRedirect("viewCustomers.jsp");
     }
 
+<<<<<<< HEAD
     // ================= HELPER METHODS FOR JSP =================
+=======
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
 
     public static List<Customer> getAllCustomers() {
         List<Customer> customers = new ArrayList<>();

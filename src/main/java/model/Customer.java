@@ -6,11 +6,18 @@ public class Customer {
     private String address;
     private String phone;
 
+<<<<<<< HEAD
     // ✅ Default no-arg constructor (needed for JSP/Servlet frameworks)
     public Customer() {
     }
 
     // ✅ Constructor with all fields (used in CustomerServlet)
+=======
+
+    public Customer() {
+    }
+
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
     public Customer(String accountNumber, String name, String address, String phone) {
         this.accountNumber = accountNumber;
         this.name = name;
@@ -18,7 +25,10 @@ public class Customer {
         this.phone = phone;
     }
 
+<<<<<<< HEAD
     // ✅ Getters & Setters
+=======
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
     public String getAccountNumber() {
         return accountNumber;
     }
