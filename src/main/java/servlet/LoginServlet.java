@@ -1,11 +1,17 @@
 package servlet;
 
+import model.Cashier;
+import util.DBConnection;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+<<<<<<< HEAD
+=======
 import jakarta.servlet.http.HttpSession;
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -19,6 +25,15 @@ import model.Cashier;
 public class LoginServlet extends HttpServlet {
 
     @Override
+<<<<<<< HEAD
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.getRequestDispatcher("login.jsp").forward(request, response);
+    }
+
+    @Override
+=======
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -27,6 +42,48 @@ public class LoginServlet extends HttpServlet {
 
         try (Connection conn = DBConnection.getConnection()) {
 
+<<<<<<< HEAD
+            // Check users table
+            String sqlUser = "SELECT username, password FROM users WHERE username = ? AND password = ?";
+            PreparedStatement stmtUser = conn.prepareStatement(sqlUser);
+            stmtUser.setString(1, username);
+            stmtUser.setString(2, password);
+            ResultSet rsUser = stmtUser.executeQuery();
+
+            if (rsUser.next()) {
+                request.getSession().setAttribute("username", rsUser.getString("username"));
+                request.getSession().setAttribute("loginType", "user");
+                response.sendRedirect("dashboard.jsp");
+                return;
+            }
+
+            // Check cashiers table
+            String sqlCashier = "SELECT cashierId, username, password FROM cashiers WHERE username = ? AND password = ?";
+            PreparedStatement stmtCashier = conn.prepareStatement(sqlCashier);
+            stmtCashier.setString(1, username);
+            stmtCashier.setString(2, password);
+            ResultSet rsCashier = stmtCashier.executeQuery();
+
+            if (rsCashier.next()) {
+                Cashier cashier = new Cashier(
+                        rsCashier.getInt("cashierId"),
+                        rsCashier.getString("username"),
+                        rsCashier.getString("password")
+                );
+                request.getSession().setAttribute("cashier", cashier);
+                request.getSession().setAttribute("loginType", "cashier");
+                response.sendRedirect("dashboard.jsp");
+                return;
+            }
+
+            // Invalid login
+            request.setAttribute("error", "Invalid username or password");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            request.setAttribute("error", "Database error: " + e.getMessage());
+=======
 
             String sqlUser = "SELECT * FROM users WHERE username=? AND password=?";
             try (PreparedStatement ps = conn.prepareStatement(sqlUser)) {
@@ -67,6 +124,7 @@ public class LoginServlet extends HttpServlet {
 
             // If no match → back to login
             request.setAttribute("error", "Invalid username or password");
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
             request.getRequestDispatcher("login.jsp").forward(request, response);
 
         } catch (Exception e) {

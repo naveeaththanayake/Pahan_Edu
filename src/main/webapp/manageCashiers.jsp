@@ -147,7 +147,11 @@
         <button type="submit" class="btn btn-primary">Add Cashier</button>
     </form>
 
+<<<<<<< HEAD
+    <!-- Cashier List -->
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
     <h3>Cashier List</h3>
     <%
         List<Cashier> cashiers = new ArrayList<>();
@@ -185,14 +189,22 @@
             <td><%= cashier.getCashierId() %></td>
             <td><%= cashier.getUsername() %></td>
             <td>
+<<<<<<< HEAD
+                <!-- Update Form -->
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
                 <form action="manageCashiers.jsp" method="post" class="inline-form">
                     <input type="hidden" name="action" value="update">
                     <input type="hidden" name="cashierId" value="<%= cashier.getCashierId() %>">
                     <input type="password" class="form-input" name="password" placeholder="New Password" required>
                     <button type="submit" class="btn btn-sm btn-primary">Update</button>
                 </form>
+<<<<<<< HEAD
+                <!-- Delete Form -->
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
                 <form action="manageCashiers.jsp" method="post" class="inline-form">
                     <input type="hidden" name="action" value="delete">
                     <input type="hidden" name="cashierId" value="<%= cashier.getCashierId() %>">

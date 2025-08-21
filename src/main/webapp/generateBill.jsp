@@ -1,4 +1,7 @@
 <<<<<<< Updated upstream
+<<<<<<< HEAD
+=======
+=======
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Customer, java.util.List" %>
 <html>
@@ -60,6 +63,7 @@
 </html>
 =======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Customer, model.Item, servlet.CustomerServlet, servlet.ItemServlet, util.DBConnection, java.sql.*, java.util.*" %>
 <html>
@@ -90,7 +94,11 @@
             StringBuilder details = new StringBuilder();
 
             try(Connection conn = DBConnection.getConnection()) {
+<<<<<<< HEAD
+                // Fetch purchases
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
                 String sql = "SELECT i.name, i.price, p.quantity FROM purchases p JOIN items i ON p.itemId = i.itemId WHERE p.accountNumber = ?";
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 stmt.setString(1, accountNumber);
@@ -114,6 +122,10 @@
                     totalBill += total;
                 }
 
+<<<<<<< HEAD
+                // Save bill to bills table
+=======
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
                 if(!purchases.isEmpty()) {
                     String insertBill = "INSERT INTO bills (accountNumber, details, totalAmount, createdAt) VALUES (?, ?, ?, NOW())";
                     PreparedStatement psBill = conn.prepareStatement(insertBill);
@@ -123,6 +135,10 @@
                     psBill.executeUpdate();
                     psBill.close();
 
+<<<<<<< HEAD
+                    // Clear the purchases for this customer
+=======
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
                     String deletePurchases = "DELETE FROM purchases WHERE accountNumber = ?";
                     PreparedStatement psDelete = conn.prepareStatement(deletePurchases);
                     psDelete.setString(1, accountNumber);
@@ -184,5 +200,8 @@
 
 </body>
 </html>
+<<<<<<< HEAD
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 >>>>>>> Stashed changes

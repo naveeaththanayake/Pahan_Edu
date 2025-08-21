@@ -61,6 +61,10 @@ public class PurchaseServlet extends HttpServlet {
             } catch (Exception ignored) {}
         }
 
+<<<<<<< HEAD
+        // Redirect back to addPurchase.jsp with the same accountNumber
+=======
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
         response.sendRedirect("addPurchase.jsp?accountNumber=" + accountNumber);
     }
 }

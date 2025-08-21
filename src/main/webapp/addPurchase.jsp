@@ -1,4 +1,9 @@
 <<<<<<< Updated upstream
+<<<<<<< HEAD
+=======
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="model.Customer, model.Item,servlet.BillServlet, servlet.CustomerServlet, servlet.ItemServlet, util.DBConnection, java.sql.*, java.util.*" %>
+=======
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Customer, model.Item, servlet.CustomerServlet, servlet.ItemServlet, java.util.List" %>
 =======
@@ -7,12 +12,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Customer, model.Item,servlet.BillServlet, servlet.CustomerServlet, servlet.ItemServlet, util.DBConnection, java.sql.*, java.util.*" %>
 >>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 <html>
 <head>
     <title>Add Purchase - Pahana Edu Bookshop</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=<%= System.currentTimeMillis() %>">
+<<<<<<< HEAD
+=======
 <<<<<<< Updated upstream
 =======
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
     <script>
         function printBill() {
             // Redirect to generateBill.jsp with accountNumber
@@ -24,7 +33,10 @@
             }
         }
     </script>
+<<<<<<< HEAD
+=======
 >>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 </head>
 <body>
 
@@ -36,31 +48,44 @@
         <li><a href="viewCustomers.jsp">View Customers</a></li>
         <li><a href="manageItems.jsp">Manage Items</a></li>
         <li><a href="addPurchase.jsp">Add Purchase</a></li>
+<<<<<<< HEAD
+        <li><a href="billHistory.jsp">Bill History</a></li>
+        <li><a href="saleReport.jsp" >Sale Report</a></li>
+=======
 <<<<<<< Updated upstream
         <li><a href="generateBill.jsp">Generate Bill</a></li>
 =======
         <li><a href="billHistory.jsp">Bill History</a></li>
         <li><a href="saleReport.jsp" >Sale Report</a></li>
 >>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
         <li><a href="help.jsp">Help</a></li>
         <li><a href="login.jsp">Exit</a></li>
     </ul>
 </div>
+<<<<<<< HEAD
+=======
 <<<<<<< Updated upstream
 <br></br>
 
 <div class="container">
     <h2 class="mt-5">Add Purchase</h2>
 =======
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 <br>
 
 <div class="container">
     <h2>Add Purchase</h2>
+<<<<<<< HEAD
+=======
 >>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
     <% if (request.getAttribute("error") != null) { %>
     <div class="alert alert-danger"><%= request.getAttribute("error") %></div>
     <% } %>
 
+<<<<<<< HEAD
+=======
 <<<<<<< Updated upstream
     <%
         // Get the account number if passed from "Bill" button
@@ -104,6 +129,7 @@
 </body>
 </html>
 =======
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
     <%-- Handle Add Purchase POST --%>
     <%
         String postAction = request.getParameter("addAction");
@@ -279,4 +305,7 @@
 </body>
 </html>
 >>>>>>> Stashed changes
+<<<<<<< HEAD
+=======
 >>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f

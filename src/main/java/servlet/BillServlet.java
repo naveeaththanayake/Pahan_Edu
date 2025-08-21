@@ -35,11 +35,19 @@ public class BillServlet extends HttpServlet {
             }
         }
 
+<<<<<<< HEAD
+        // Redirect back to bill history page
+=======
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
         response.sendRedirect("billHistory.jsp");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+<<<<<<< HEAD
+        // Optionally, you can handle fetching bills for display here
+=======
 
+>>>>>>> 583dd582f8d1f1ac0b07a71509227deaf3147174
         doPost(request, response);
     }
 }

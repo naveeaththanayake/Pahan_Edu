@@ -6,8 +6,11 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css?v=<%= System.currentTimeMillis() %>">
 </head>
 <body>
+<<<<<<< HEAD
+=======
 <br>
 <h1>PAHANA EDU BOOKSHOP</h1>
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 <div class="nav">
     <ul>
         <li><a href="addCustomer.jsp">Add New Customer</a></li>
@@ -20,7 +23,10 @@
         <li><a href="login.jsp">Exit</a></li>
     </ul>
 </div>
+<<<<<<< HEAD
+=======
 <br>
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 
 <div class="main-container">
     <h2>Bill History</h2>
@@ -47,9 +53,13 @@
             <th>Details</th>
             <th>Total Amount</th>
             <th>Created At</th>
+<<<<<<< HEAD
+            <th>Actions</th>
+=======
             <% if ("user".equals(session.getAttribute("loginType"))) { %>
             <th>Actions</th>
             <% } %>
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
         </tr>
         </thead>
         <tbody>
@@ -60,8 +70,13 @@
 
                 // Build query
                 String query = "SELECT * FROM bills WHERE 1=1";
+<<<<<<< HEAD
+                String dayParam = request.getParameter("day");       // yyyy-MM-dd
+                String monthParam = request.getParameter("month");   // yyyy-MM
+=======
                 String dayParam = request.getParameter("day");
                 String monthParam = request.getParameter("month");
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 
                 if(dayParam != null && !dayParam.trim().isEmpty()) {
                     query += " AND DATE(createdAt) = ?";
@@ -93,15 +108,23 @@
             <td><%= rs.getString("details") %></td>
             <td>LKR <%= String.format("%.2f", rs.getDouble("totalAmount")) %></td>
             <td><%= rs.getTimestamp("createdAt") %></td>
+<<<<<<< HEAD
+            <td>
+                <form method="post" action="billHistory.jsp" onsubmit="return confirm('Are you sure you want to delete this bill?');">
+=======
             <% if ("user".equals(session.getAttribute("loginType"))) { %>
             <td>
                 <form method="post" action="billHistory.jsp"
                       onsubmit="return confirm('Are you sure you want to delete this bill?');">
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
                     <input type="hidden" name="billId" value="<%= rs.getInt("id") %>">
                     <button type="submit" class="btn btn-danger">Delete</button>
                 </form>
             </td>
+<<<<<<< HEAD
+=======
             <% } %>
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
         </tr>
         <%  }
             if(!hasData) { %>
@@ -120,8 +143,14 @@
     <a href="dashboard.jsp" class="btn btn-primary">Back to Dashboard</a>
 
     <%
+<<<<<<< HEAD
+            // Handle deletion
+            String billIdStr = request.getParameter("billId");
+            if(billIdStr != null) {
+=======
             String billIdStr = request.getParameter("billId");
             if(billIdStr != null && "user".equals(session.getAttribute("loginType"))) {
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
                 try (PreparedStatement deleteStmt = conn.prepareStatement("DELETE FROM bills WHERE id=?")) {
                     deleteStmt.setInt(1, Integer.parseInt(billIdStr));
                     deleteStmt.executeUpdate();

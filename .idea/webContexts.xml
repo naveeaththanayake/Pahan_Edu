@@ -4,6 +4,10 @@
     <option name="state">
       <map>
 <<<<<<< HEAD
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/addPurchase.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+        <entry key="file://$PROJECT_DIR$/src/main/webapp/billhistrory.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
+=======
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< HEAD
 =======
@@ -11,6 +15,7 @@
 >>>>>>> 1663456386a8ff69af37a533a86f5a231db12e4d
 =======
 >>>>>>> e96c4b26eacede0dc53bf01fcaf066251166c721
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
         <entry key="file://$PROJECT_DIR$/src/main/webapp/dashboard.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/login.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />
         <entry key="file://$PROJECT_DIR$/src/main/webapp/manageItems.jsp" value="file://$PROJECT_DIR$/src/main/webapp" />

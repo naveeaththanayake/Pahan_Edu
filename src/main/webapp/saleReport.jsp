@@ -32,7 +32,11 @@
 <div class="main-container">
     <h2>Sales Report</h2>
 
+<<<<<<< HEAD
+    <!-- Filter Form -->
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
     <form method="get" class="filter-form">
         <label for="day">Select Day:</label>
         <input type="date" name="day" id="day" value="<%= request.getParameter("day") != null ? request.getParameter("day") : "" %>">
@@ -86,10 +90,17 @@
             stmt.close();
             conn.close();
         } catch(Exception e) {
+<<<<<<< HEAD
+            out.println("<p style='color:red;'>Error: " + e.getMessage() + "</p>");
+        }
+
+        // Convert map to JS arrays properly
+=======
             System.out.println("<p style='color:red;'>Error: " + e.getMessage() + "</p>");
         }
 
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
         StringBuilder labelsBuilder = new StringBuilder("[");
         StringBuilder dataBuilder = new StringBuilder("[");
         for(Map.Entry<String, Double> entry : dailySales.entrySet()) {

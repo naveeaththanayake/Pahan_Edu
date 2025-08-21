@@ -48,7 +48,11 @@
 
     <br/>
 
+<<<<<<< HEAD
+    <%-- Fetch Purchases --%>
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
     <%
         List<Map<String,Object>> purchases = new ArrayList<>();
         if (selectedAccount != null) {
@@ -127,7 +131,11 @@
 
 </div>
 
+<<<<<<< HEAD
+<%-- Handle Update/Delete --%>
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 <%
     String action = request.getParameter("action");
     String purchaseIdStr = request.getParameter("purchaseId");
@@ -149,7 +157,11 @@
         } catch (Exception e) {
             e.printStackTrace();
         }
+<<<<<<< HEAD
+        // Refresh page for selected customer
+=======
 
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
         response.sendRedirect("managePurchase.jsp?accountNumber=" + accountNumber);
         return;
     }
