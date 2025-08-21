@@ -1,5 +1,11 @@
 <<<<<<< Updated upstream
 =======
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="model.Customer, servlet.CustomerServlet, java.util.List" %>
 
@@ -17,7 +23,15 @@
     <li><a href="viewCustomers.jsp" >View Customers</a></li>
     <li><a href="manageItems.jsp" >Manage Items</a></li>
     <li><a href="addPurchase.jsp" >Add Purchase</a></li>
+<<<<<<< HEAD
     <li><a href="billHistory.jsp" >Bill History</a></li>
+=======
+<<<<<<< Updated upstream
+    <li><a href="generateBill.jsp" >Generate Bill</a></li>
+=======
+    <li><a href="billHistory.jsp" >Bill History</a></li>
+>>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
     <li><a href="help.jsp" >Help</a></li>
     <li><a href="login.jsp" >Exit</a></li>
 </ul>
@@ -85,5 +99,13 @@
 </div>
     <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+<<<<<<< Updated upstream
+</html>
+=======
+</html>
+
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 >>>>>>> Stashed changes

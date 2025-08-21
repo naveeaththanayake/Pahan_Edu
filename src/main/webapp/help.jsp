@@ -1,5 +1,10 @@
 <<<<<<< Updated upstream
 =======
+<<<<<<< HEAD
+=======
+
+>>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,6 +14,23 @@
 <body>
 
 <br>
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+<h1 >PAHANA EDU BOOKSHOP</h1>
+<div class ="nav"><ul>
+    <li><a href="addCustomer.jsp" >Add New Customer</a></li>
+    <li><a href="viewCustomers.jsp" >View Customers</a></li>
+    <li><a href="manageItems.jsp" >Manage Items</a></li>
+    <li><a href="addPurchase.jsp" >Add Purchase</a></li>
+    <li><a href="generateBill.jsp" >Generate Bill</a></li>
+    <li><a href="help.jsp" >Help</a></li>
+    <li><a href="login.jsp" >Exit</a></li>
+</ul>
+</div>
+<br></br>
+=======
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 <h1>PAHANA EDU BOOKSHOP</h1>
 <div class="nav">
     <ul>
@@ -24,6 +46,10 @@
     </ul>
 </div>
 <br>
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 
 <div class="container">
     <h2 class="mt-5">Help - System Usage Guidelines</h2>
@@ -46,5 +72,13 @@
     <a href="dashboard.jsp" class="btn btn-secondary">Back</a>
 </div>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+<<<<<<< Updated upstream
+</html>
+=======
+</html>
+
+>>>>>>> 364f54e723446adc100a91643b59d04f8bfae46f
 >>>>>>> Stashed changes
